@@ -16,7 +16,6 @@ function validateForm() {
     var password = document.getElementById("password").value;
 
     if (userid == "admin" || password == "admin") {
-        alert("Đăng nhập thành công");
         return true;
     }
 
@@ -25,3 +24,34 @@ function validateForm() {
         return false;
     }
 } 
+
+// Slideshow
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function prevSlide(n) {
+    showSlides(slideIndex += n);
+}
+
+function nextSlide(n) {
+    showSlides(slideIndex -= n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("my-slides");
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+}
