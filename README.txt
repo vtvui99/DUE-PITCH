@@ -16,3 +16,6 @@ File registered.html: File trỏ tới trang Lịch Đã Đăng Ký.
 
 // Mọi người có thể bàn bạc đổi tên lại tên file, folder nếu cảm giác không hài lòng.
 
+UPDATE 23/3/2020(Việt):
+*****************************
+Upload hoàn thiện website + responsive
