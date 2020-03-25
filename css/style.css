@@ -23,6 +23,15 @@ a {
     margin: auto;
 }
 
+.title {
+    color: #0C74C6;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 7px 0px 5px 15px;
+    border-bottom: 1px solid #A9A9A9;
+}
+
 /* Login */
 .login {
     width: 405px;
@@ -187,20 +196,10 @@ header .logout {
 
 .main .main-content {
     flex-basis: 75%;
-    height: 600px;
-    border: 1px solid #333;
+    height: 500px;
 }
 
 /* Navigation */
-.navbar h3 {
-    color: #0C74C6;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 7px 0px 5px 15px;
-    border-bottom: 1px solid #A9A9A9;
-}
-
 .navbar .current {
     background-color: #106CB2;
     color: #fff;
@@ -227,8 +226,49 @@ header .logout {
 }
 
 /* Main Content */
-.main-content {
+.main-content .tab {
+    display: block;
     text-align: center;
+    margin-top: 8px;
+}
+
+.main-content button.tablinks { 
+    width: 22%;
+    min-height: 30px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 8px 5px;
+    outline: none;
+}
+
+.main-content button.active {
+    background: #106CB2;
+    color: #ffffff;
+}
+
+.main-content button:hover {
+    background: #106CB2;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.main-content .tabcontent {
+    width: 80%;
+    margin: auto;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+.main-content #rules-registered {
+    display: block;
+}
+
+.main-content #rules-used {
+    display: none;
+}
+
+.main-content .alert {
+    color: #FF0000;
 }
 
 /* Footer */
@@ -262,6 +302,15 @@ footer {
 
 .connection ul li {
     flex-basis: 25%;
+}
+
+.connection .fab, .connection .fas {
+    font-size: 13px;
+    color: #F17945;
+    border: 2px solid #F17945;
+    border-radius: 50%;
+    padding: 5px 7px;
+    margin-right: 5px;
 }
 
 .footer-content h3 {
@@ -429,5 +478,15 @@ footer {
     .prev, .next {
         padding: 12px;
         font-size: 18px;
+    }
+
+    .main-content button.tablinks {
+        width: 40%;
+    }
+
+    .main-content .tabcontent {
+        width: 100%;
+        height: 450px;
+        overflow: scroll;
     }
 }

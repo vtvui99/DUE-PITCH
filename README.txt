@@ -19,3 +19,8 @@ File registered.html: File trỏ tới trang Lịch Đã Đăng Ký.
 UPDATE 23/3/2020(Việt):
 *****************************
 Upload hoàn thiện website + responsive
+
+UPDATE 25/3/2020(Việt):
+*****************************
+Thêm Folder + File Font Awesome
+Thêm content ở Tab Trang Chủ
