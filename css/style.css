@@ -184,7 +184,7 @@ header .logout {
     margin: 15px 0px;
 }
 
-.main div {
+.main .container {
     display: flex;
 }
 
@@ -246,7 +246,7 @@ header .logout {
     color: #ffffff;
 }
 
-.main-content button:hover {
+.main-content button.tablinks:hover {
     background: #106CB2;
     color: #ffffff;
     cursor: pointer;
@@ -271,6 +271,12 @@ header .logout {
     color: #FF0000;
 }
 
+.main-content .content {
+    margin: 30px auto 0 auto;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
 /* Footer */
 footer {
     width: 100%;
@@ -293,7 +299,7 @@ footer {
 }
 
 .footer-content .connection {
-    flex: 1.5;
+    flex: 2;
 }
 
 .connection ul {
@@ -307,7 +313,7 @@ footer {
 .connection .fab, .connection .fas {
     font-size: 13px;
     color: #F17945;
-    border: 2px solid #F17945;
+    border: 1.5px solid #F17945;
     border-radius: 50%;
     padding: 5px 7px;
     margin-right: 5px;
@@ -351,7 +357,7 @@ footer {
     .container {
         width: 80%;
     }
-    .main div {
+    .main .container {
         display: block;
     }
     
@@ -383,6 +389,10 @@ footer {
     
     .footer-content .connection ul {
         display: block;
+    }
+
+    .footer-content .connection ul li {
+        margin-bottom: 5px;
     }
 }
 
@@ -441,9 +451,15 @@ footer {
         font-size: 11px;
     }
 
+    .main-content .tabcontent {
+        width: 100%;
+        height: 450px;
+        overflow: scroll;
+    }
+
     footer {
         width: 100%;
-        height: 515px;
+        height: 535px;
         background-size: cover;
     }
     
@@ -471,8 +487,7 @@ footer {
     }
 
     header .logout {
-        float: right;
-        margin-bottom: 10px;
+        display: inline-block;
     }
 
     .prev, .next {

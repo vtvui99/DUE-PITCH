@@ -24,3 +24,4 @@ UPDATE 25/3/2020(Việt):
 *****************************
 Thêm Folder + File Font Awesome
 Thêm content ở Tab Trang Chủ
+Thêm content ở Tab Đăng Ký

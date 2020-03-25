@@ -15,7 +15,7 @@ function validateForm() {
     var userid = document.getElementById("userid").value;
     var password = document.getElementById("password").value;
 
-    if (userid == "admin" || password == "admin") {
+    if (userid == "admin" && password == "admin") {
         return true;
     }
 

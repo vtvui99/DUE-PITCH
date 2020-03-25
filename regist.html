@@ -6,6 +6,8 @@
     <title>Đăng Ký</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/vanilla-calendar.css">
+    <script src="./js/vanilla-calendar.js"></script>
 </head>
 <body>
     <header>
@@ -29,6 +31,9 @@
             </aside>
             <article class="main-content">
                 <h3 class="title">Đăng ký sân</h3>
+                <div class="content">
+                    <div id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
+                </div>
             </article>
         </div>
     </section>
@@ -70,5 +75,15 @@
     </footer>
 
     <script type="text/javascript" src="./js/scripts.js"></script>
+    <script>
+        let calendar = new VanillaCalendar({
+            selector: "#myCalendar",
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            shortWeekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            onSelect: (data, elem) => {
+                alert("Click vào sẽ hiện danh sách giờ đăng ký cho người dùng");
+            }
+        })
+    </script>
 </body>
 </html>
