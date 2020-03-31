@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch Đã Đăng Ký</title>
+    <title>Đăng Ký</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/vanilla-calendar.css">
+    <script src="./js/vanilla-calendar.js"></script>
 </head>
-<body>
+<body onload="calendarDetails()">
     <header>
         <div class="container">
             <a class="logo" href="index.html"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
@@ -23,13 +25,16 @@
                 <h3 class="title">Sân bóng</h3>
                 <ul>
                     <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="regist-calendar.html">Đăng Ký</a></li>
-                    <li><a class="current" href="registered.html">Lịch Đã Đăng Ký</a></li>
+                    <li><a class="current" href="regist-calendar.html">Đăng Ký</a></li>
+                    <li><a href="registered.html">Lịch Đã Đăng Ký</a></li>
                 </ul>
             </aside>
             <article class="main-content">
                 <div class="header">
-                    <h3 class="title">Sân đã đăng ký</h3>
+                    <h3 class="title">Đăng ký sân</h3>
+                </div>
+                <div class="content">
+                    <div id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
                 </div>
             </article>
         </div>

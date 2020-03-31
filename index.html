@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/all.css">
 </head>
-<body>
+<body onload="showSlides(slideIndex)">
     <header>
         <div class="container">
             <a class="logo" href="index.html"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
@@ -42,19 +42,21 @@
                 <h3 class="title">Sân bóng</h3>
                 <ul>
                     <li><a class="current" href="index.html">Trang Chủ</a></li>
-                    <li><a href="regist.html">Đăng Ký</a></li>
+                    <li><a href="regist-calendar.html">Đăng Ký</a></li>
                     <li><a href="registered.html">Lịch Đã Đăng Ký</a></li>
                 </ul>
             </aside>
             <article class="main-content">
-                <h3 class="title">Quy định của sân bóng DUE</h3>
+                <div class="header">
+                    <h3 class="title">Quy định của sân bóng DUE</h3>
+                </div>
 
                 <div class="tab">
-                    <button class="tablinks active" onclick="openTab(event, 'rules-registered')">Quy định khi đăng ký sân</button>
-                    <button class="tablinks" onclick="openTab(event, 'rules-used')">Quy định khi sử dụng sân</button>
+                    <button class="tablinks active" onclick="openTab(event, 'tab-1')">Quy định khi đăng ký sân</button>
+                    <button class="tablinks" onclick="openTab(event, 'tab-2')">Quy định khi sử dụng sân</button>
                 </div>
             
-                <div id="rules-registered" class="tabcontent">
+                <div id="tab-1" class="tabcontent">
                     <ol type="1">
                         <li>Thời gian đăng kí phải trước thời gian diễn ra trận đấu ít nhất 1 ngày.</li>
                         <li>Người đăng kí sử dụng tài khoản của mình và chịu hoàn toàn trách nhiệm khi có vấn đề xảy ra.</li>
@@ -67,7 +69,7 @@
                     </ul>
                 </div>
                 
-                <div id="rules-used" class="tabcontent">
+                <div id="tab-2" class="tabcontent">
                     <ol type="1">
                         <li>Chỉ có thành viên theo quy định của Ban tổ chức giải được tham gia thi đấu và trong khu vực sân bóng.</li>
                         <li>Thi đấu với tinh thần trung thực, cao thượng và fair-play.</li>

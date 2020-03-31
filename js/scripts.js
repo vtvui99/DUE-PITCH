@@ -27,7 +27,6 @@ function validateForm() {
 
 // Slideshow
 var slideIndex = 1;
-showSlides(slideIndex);
 
 function prevSlide(n) {
     showSlides(slideIndex += n);
@@ -73,3 +72,123 @@ function openTab(event, tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
 }
+
+// Go Back
+function goBack() {
+    window.history.back();
+}
+
+// Submit Regist
+function regist() {
+    var anchors = document.getElementsByClassName('button-regist');
+    for(var i = 0; i < anchors.length; i++) {
+        var anchor = anchors[i];
+        anchor.onclick = function() {
+            window.location = "regist-form.html";
+        }
+    }
+}
+
+// Calendar
+function calendarDetails() {
+    let calendar = new VanillaCalendar({
+        selector: "#myCalendar",
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        shortWeekday: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        pastDates: false,
+        onSelect: (data, elem) => {
+            let daysConvert = "", monthsConvert = "";
+            switch (data.date.toString().slice(0, 3)) {
+                case "Sun":
+                    daysConvert = "Chủ Nhật";
+                    break;
+                case "Mon":
+                    daysConvert = "Thứ Hai";
+                    break;
+                case "Tue":
+                    daysConvert = "Thứ Ba";
+                    break;
+                case "Wed":
+                    daysConvert = "Thứ Tư";
+                    break;
+                case "Thu":
+                    daysConvert = "Thứ Năm";
+                    break;
+                case "Fri":
+                    daysConvert = "Thứ Sáu";
+                    break;
+                case "Sat":
+                    daysConvert = "Thứ Bảy";
+                    break;
+            };
+
+            switch (data.date.toString().slice(4, 7)) {
+                case "Jan":
+                    monthsConvert = "01";
+                    break;
+                case "Feb":
+                    monthsConvert = "02";
+                    break;
+                case "Mar":
+                    monthsConvert = "03";
+                    break;
+                case "Apr":
+                    monthsConvert = "04";
+                    break;
+                case "May":
+                    monthsConvert = "05";
+                    break;
+                case "Jun":
+                    monthsConvert = "06";
+                    break;
+                case "Jul":
+                    monthsConvert = "07";
+                    break;
+                case "Aug":
+                    monthsConvert = "08";
+                    break;
+                case "Sep":
+                    monthsConvert = "09";
+                    break;
+                case "Oct":
+                    monthsConvert = "10";
+                    break;
+                case "Nov":
+                    monthsConvert = "11";
+                    break;
+                case "Dec":
+                    monthsConvert = "12";
+                    break;
+            };
+            let daydetails = (daysConvert + " " + data.date.toString().slice(8, 10) + "/" + monthsConvert + "/" + data.date.toString().slice(11, 15));
+            alert("Bạn đang chọn " + daydetails);
+            let setValue = localStorage.setItem("storageDays", daydetails);
+            let getValue = localStorage.getItem("storageDays", daydetails);
+            if (getValue.slice(0, -11) === "Thứ Bảy" || getValue.slice(0, -11) === "Chủ Nhật") {
+                window.location = "regist-timetable-2.html";
+            }
+            else window.location = "regist-timetable-1.html";
+        }
+    });
+}
+
+var getValue = localStorage.getItem("storageDays");
+function getTimes() {
+    document.getElementById("timedetails").innerHTML = getValue;
+}
+
+// Edit Warning Text
+document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                e.target.setCustomValidity("Phần này không thể bỏ trống");
+            }
+        };
+        elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+    }
+})
