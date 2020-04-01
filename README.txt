@@ -13,6 +13,3 @@ File login.html: File trỏ tới trang Đăng Nhập.
 File index.html: File trỏ tới trang Trang Chủ.
 File regist.html: File trỏ tới trang Đăng Ký.
 File registered.html: File trỏ tới trang Lịch Đã Đăng Ký.
-
-// Mọi người có thể bàn bạc đổi tên lại tên file, folder nếu cảm giác không hài lòng.
-
