@@ -34,13 +34,9 @@ UPDATE 1/4/2020:
 *****************************
 Sửa lại file README.txt
 
-
-
-
-
-
-
-
+UPDATE 2/4/2020:
+*****************************
+Thêm alert khi yêu cầu thoát khỏi trang đăng ký form
 
 
 
