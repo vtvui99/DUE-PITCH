@@ -18,9 +18,26 @@ a {
     text-decoration: none;
 }
 
+a:visited {
+    color: #0C74C6;
+}
+
 .container {
     width: 75%;
     margin: auto;
+}
+
+.title {
+    color: #0C74C6;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 7px 0px 5px 15px;
+}
+
+@keyframes fade {
+    from {opacity: 0.2}
+    to {opacity: 1}
 }
 
 /* Login */
@@ -56,7 +73,7 @@ a {
     color: #fff;
 }
 
-input[type="text"], input[type="password"] {
+.form-login input[type="text"], .form-login input[type="password"] {
     width: 50%;
     height: 25px;
     line-height: 25px;
@@ -65,7 +82,7 @@ input[type="text"], input[type="password"] {
     outline: none;
 }
 
-input[type="checkbox"] {
+.form-login input[type="checkbox"] {
     margin: 15px 5px 0px 130px;
     vertical-align: -2px;
     cursor: pointer;
@@ -165,17 +182,12 @@ header .logout {
     opacity: 0.6;
 }
 
-@keyframes fade {
-    from {opacity: 0.4}
-    to {opacity: 1}
-}
-
 /* Main */
 .main {
     margin: 15px 0px;
 }
 
-.main div {
+.main .container {
     display: flex;
 }
 
@@ -187,17 +199,11 @@ header .logout {
 
 .main .main-content {
     flex-basis: 75%;
-    height: 600px;
-    border: 1px solid #333;
+    height: 500px;
 }
 
 /* Navigation */
-.navbar h3 {
-    color: #0C74C6;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 7px 0px 5px 15px;
+.navbar .title {    
     border-bottom: 1px solid #A9A9A9;
 }
 
@@ -227,8 +233,206 @@ header .logout {
 }
 
 /* Main Content */
-.main-content {
+.main-content .header {
+    display: flex;
+    width: 100%;
+}
+
+.main-content .title {
+    flex-basis: 85%;
+}
+
+.main-content .go-back {
+    align-self: center;
+    flex-basis: 85px;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 0px;
+    border-radius: 4px;
+    border: 1px solid #A9A9A9;
+}
+
+.main-content .go-back .fas {
+    margin-left: 5px;
+    padding-right: 7px;
+    font-size: 14px;
+}
+
+.main-content .go-back:hover {
+    background: #0C74C6;
+    color: #ffffff;
+    padding: 4px 0px;
+    border-radius: 4px;
+}
+
+.main-content .alert {
+    color: #FF0000;
+}
+
+.main-content .content {
+    margin: 30px auto 0 auto;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+.main-content h3#timedetails {
+    height: 30px;
+    line-height: 30px;
+    margin: 0 20px;
+    font-size: 19px;
+    font-weight: 600;
     text-align: center;
+}
+
+/* Tab Content */
+.main-content .tab {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.main-content button.tablinks { 
+    width: 22%;
+    min-height: 30px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 8px 5px;
+    outline: none;
+}
+
+.main-content button.pitches {
+    width: 15%;
+}
+
+.main-content button.active {
+    background: #106CB2;
+    color: #ffffff;
+}
+
+.main-content button.tablinks:hover {
+    background: #106CB2;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.main-content .tabcontent {
+    width: 80%;
+    height: 400px;
+    margin: auto;
+    overflow: auto;
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+.main-content #tab-1 {
+    display: block;
+}
+
+.main-content #tab-2 {
+    display: none;
+}
+
+/* Timetable */
+.main-content table{
+    width: 90%;
+    margin: 15px auto;
+}
+
+.main-content table tr {
+    display: flex;
+    background: #FAFAFA;
+    height: 38px;
+    line-height: 38px;
+}
+
+.main-content table td, .main-content table th {
+    text-align: center;
+    border-left: 1px solid #A9A9A9;
+    border-top: 1px solid #A9A9A9;
+}
+
+.main-content table tr .times, .main-content table tr .status, .main-content table th {
+    flex: 2;
+}
+
+.main-content table tr:last-child td {
+    border-bottom: 1px solid #A9A9A9;
+}
+
+.main-content table tr td:last-child, .main-content table th:last-child {
+    flex: 1;
+    border-right: 1px solid #A9A9A9;
+}
+
+.main-content table .button-regist {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ECECEC;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+}
+
+.main-content table .button-regist:hover {
+    background: #106CB2;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Form Register */
+.my-form {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.my-form h3 {
+    margin: 0;
+    font-size: 17px;
+    text-align: center;
+}
+
+.my-form div {
+    width: 70%;
+    margin: auto;
+}
+
+.my-form label:not(:last-child) {
+    display: inline-block;
+    width: 125px;
+    font-size: 15px;
+}
+
+.my-form input[type="text"] {
+    width: 50%;
+    height: 25px;
+    line-height: 25px;
+    padding: 3px 10px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    border: 1px solid #A9A9A9;
+    outline: none;
+}
+
+.my-form input[type="radio"] {
+    margin-left: 25px;
+}
+
+.my-form .button-register {
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    border: 1px solid #A9A9A9;
+    border-radius: 3px;
+}
+
+.my-form .button-register:hover {
+    background: #106CB2;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
 }
 
 /* Footer */
@@ -253,7 +457,7 @@ footer {
 }
 
 .footer-content .connection {
-    flex: 1.5;
+    flex: 2;
 }
 
 .connection ul {
@@ -262,6 +466,15 @@ footer {
 
 .connection ul li {
     flex-basis: 25%;
+}
+
+.connection .fab, .connection .fas {
+    font-size: 13px;
+    color: #F17945;
+    border: 1.5px solid #F17945;
+    border-radius: 50%;
+    padding: 5px 7px;
+    margin-right: 5px;
 }
 
 .footer-content h3 {
@@ -302,7 +515,7 @@ footer {
     .container {
         width: 80%;
     }
-    .main div {
+    .main .container {
         display: block;
     }
     
@@ -335,6 +548,10 @@ footer {
     .footer-content .connection ul {
         display: block;
     }
+
+    .footer-content .connection ul li {
+        margin-bottom: 5px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -363,7 +580,7 @@ footer {
         font-size: 9px;
     }
     
-    input[type="text"], input[type="password"] {
+    .form-login input[type="text"], .form-login input[type="password"] {
         width: 50%;
         height: 13px;
         line-height: 13px;
@@ -371,7 +588,7 @@ footer {
         font-size: 9px;
     }
     
-    input[type="checkbox"] {
+    .form-login input[type="checkbox"] {
         padding: 0;
         margin: 5px 2px 0px 60px;
         vertical-align: -4px;
@@ -392,9 +609,28 @@ footer {
         font-size: 11px;
     }
 
+    .main-content button.tablinks {
+        width: 40%;
+    }
+    
+    .main-content button.pitches {
+        width: 30%;
+    }
+    
+
+    .main-content .tabcontent {
+        width: 100%;
+        height: 450px;
+        overflow: auto;
+    }
+
+    .main-content table{
+        width: 100%;
+    }
+
     footer {
         width: 100%;
-        height: 515px;
+        height: 535px;
         background-size: cover;
     }
     
@@ -410,6 +646,15 @@ footer {
     .footer-content ul li {
         line-height: 140%;
     }
+
+    .my-form div {
+        width: 70%;
+        margin: auto;
+    }
+
+    .my-form input[type="text"] {
+        width: 100%;
+    }
 }
 
 @media (max-width: 479px) {
@@ -422,12 +667,29 @@ footer {
     }
 
     header .logout {
-        float: right;
-        margin-bottom: 10px;
+        display: inline-block;
     }
 
     .prev, .next {
         padding: 12px;
         font-size: 18px;
+    }
+
+    .main-content .title {
+        flex-basis: 70%;
+    }
+
+    .main-content .tabcontent {
+        width: 100%;
+        height: 450px;
+        overflow: auto;
+    }
+
+    .my-form div {
+        width: 100%;
+    }
+
+    .my-form input[type="text"] {
+        width: 100%;
     }
 }

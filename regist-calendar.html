@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/vanilla-calendar.css">
+    <script src="./js/vanilla-calendar.js"></script>
 </head>
-<body>
+<body onload="calendarDetails()">
     <header>
         <div class="container">
             <a class="logo" href="index.html"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
@@ -22,14 +25,17 @@
                 <h3 class="title">Sân bóng</h3>
                 <ul>
                     <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a class="current" href="regist.html">Đăng Ký</a></li>
+                    <li><a class="current" href="regist-calendar.html">Đăng Ký</a></li>
                     <li><a href="registered.html">Lịch Đã Đăng Ký</a></li>
                 </ul>
             </aside>
             <article class="main-content">
-                <p>Thông tin đặt sân</p>
-                <p>Lịch đặt sân</p>
-                <p>Phần này hiện tại đang để khung trống vì chưa biết để gì</p>
+                <div class="header">
+                    <h3 class="title">Đăng ký sân</h3>
+                </div>
+                <div class="content">
+                    <div id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
+                </div>
             </article>
         </div>
     </section>
@@ -58,9 +64,9 @@
                 <div class="connection">
                     <h3>Kết nối</h3>
                     <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">RSS</a></li>
-                        <li><a href="#">Linked in</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                        <li><a href="#"><i class="fas fa-rss"></i>RSS</a></li>
+                        <li><a href="#"><i class="fas fa-rss"></i>Linked in</a></li>
                     </ul>
                 </div>
             </div>
