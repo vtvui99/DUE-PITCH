@@ -5,22 +5,17 @@ Folder chính của nhóm DUE PITCH. Mọi người nhớ update công việc sa
 File login.html: File trỏ tới trang Đăng Nhập.
 File index.html: File trỏ tới trang Trang Chủ.
 File regist-calendar.html: File trỏ tới trang Đăng Ký.
-File regist-timetable-1/2: File trỏ tới trang danh sách khung giờ.
-File regist-form: File trỏ tới trang Form đăng ký.
+File regist-timetable-1/2.html: File trỏ tới trang Khung giờ đăng ký.
+File regist-form.html: File trỏ tới trang Form đăng ký.
 File registered.html: File trỏ tới trang Lịch Đã Đăng Ký.
+
+Folder css: Dùng để chứa các file css.
+Folder img: Dùng để chứa các loại ảnh jpg, png, bmp,...
+Folder js: Dùng để chứa các file script javascript.
 
 UPDATE 14/3/2020:
 *****************************
 Upload lên Gibhub lần đầu.
-Folder css: Dùng để chứa các file css.
-Folder img: Dùng để chứa các loại ảnh jpg, png, bmp,...
-Folder js: Dùng để chứa các file script javascript.
-<<<<<<< HEAD
-File login.html: File trỏ tới trang Đăng Nhập.
-File index.html: File trỏ tới trang Trang Chủ.
-File regist.html: File trỏ tới trang Đăng Ký.
-File registered.html: File trỏ tới trang Lịch Đã Đăng Ký.
-=======
 
 UPDATE 23/3/2020:
 *****************************
@@ -34,6 +29,10 @@ Thêm content ở Tab Trang Chủ
 UPDATE 31/3/2020:
 *****************************
 Thêm các trang Calendar, Timetable + Form
+
+UPDATE 1/4/2020:
+*****************************
+Sửa lại file README.txt
 
 
 
