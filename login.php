@@ -1,23 +1,27 @@
 <?php
-	if (isset($_POST['login'])){
-		$conn = mysqli_connect('localhost', 'root', '123456', 'datapitch');
-		//check connect
-        if (mysqli_connect_errno()){
-            echo "Failed to connect to MySQL: " .mysqli_connect_errno();
+	if (isset($_POST['login'])) {
+        $conn = mysqli_connect('localhost', 'root', '123456', 'datapitch');
+        //check connect
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_errno();
         }
-		$username = addslashes($_POST['userid']);
-		$password = addslashes($_POST['password']);
+        $username = addslashes($_POST['userid']);
+        $password = addslashes($_POST['password']);
 
-		$query = mysqli_query($conn, "SELECT username FROM account WHERE username='$username' AND password='$password' ");
+        $query = mysqli_query($conn, "SELECT username FROM account WHERE username='$username' AND password='$password' ");
         $count = mysqli_num_rows($query);
-		if ( $count != 0){
-			header("location:index.html");
-		}
-		 else{
-                //chua hien thi duoc thong bao dang nhap sai
-		 }
+        if ($count != 0) {
+            header("location:index.html");
+        } else{
+            header( "refresh:0;url=login.php" );
+            echo '<script type="text/javascript">';
+            echo 'alert("Kiểm tra lại mã sinh viên hoặc mật khẩu")';
+            echo '</script>';
+        }
 	}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +46,7 @@
                 <input type="password" name="password" id="password" placeholder="Nhập mật khẩu..." required>
             </div>
             <label for="" class="show-password"><input type="checkbox" onclick="showYourPassword()">Hiển thị mật khẩu</label>
+            <p id="alertText" class="alert"></p>
             <button type="submit" class="submit-login" name="login">Đăng Nhập</button>
         </form>
     </div>
