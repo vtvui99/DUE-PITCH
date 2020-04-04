@@ -35,9 +35,21 @@ a:visited {
     padding: 7px 0px 5px 15px;
 }
 
+.alert {
+    color: #ff1a1a;
+}
+
 @keyframes fade {
     from {opacity: 0.2}
     to {opacity: 1}
+}
+
+@keyframes blinking {
+    0% {color: #ff1a1a;}
+    49% {color: #ff1a1a;}
+    60% {color: transparent;}
+    99% {color: transparent;}
+    100% {color: #ff1a1a;}
 }
 
 /* Login */
@@ -57,6 +69,17 @@ a:visited {
     position: absolute;
     bottom: 0;
     box-sizing: border-box;
+}
+
+.form-login p.alert {
+    position: absolute;
+    top: 45%;
+    left: 6%;
+    display: none;
+    font-weight: 600;
+    animation-name: blinking;
+    animation-duration: 1.2s;
+    animation-iteration-count: 3;
 }
 
 .form {
@@ -129,11 +152,46 @@ header .logo img {
 
 header .header-right {
     align-self: center;
+    position: relative;
+    display: inline-block;
 }
 
-header .logout {
-    color: #0C74C6;
+.header-right .dropdown-button {
+    background: none;
+    color: #106CB2;
     font-size: 14px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 4px;
+    min-width: 150px;
+    padding: 10px 0px 3px;
+    overflow: auto;
+    right: 0;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 5px 15px;
+    display: block;
+    font-size: 13px;
+}
+
+.header-right a:hover {
+    background-color: #106CB2;
+    color: #fff;
+}
+  
+.show {
+    display: block;
 }
 
 /* Slide Show */
@@ -263,10 +321,8 @@ header .logout {
     color: #ffffff;
     padding: 4px 0px;
     border-radius: 4px;
-}
-
-.main-content .alert {
-    color: #FF0000;
+    animation-name: fade;
+    animation-duration: 1.3s;
 }
 
 .main-content .content {
@@ -378,6 +434,8 @@ header .logout {
     background: #106CB2;
     color: #fff;
     cursor: pointer;
+    animation-name: fade;
+    animation-duration: 1.3s;
 }
 
 /* Form Register */
@@ -590,7 +648,7 @@ footer {
     
     .form-login input[type="checkbox"] {
         padding: 0;
-        margin: 5px 2px 0px 60px;
+        margin: 0px 0px 0px 60px;
         vertical-align: -4px;
         transform: scale(0.7);
     }
@@ -662,6 +720,11 @@ footer {
         width: 90%;
     }
 
+    .form-login p.alert {
+        top: 47%;
+        font-size: 9px;
+    }
+
     header div {
         display: block;
     }
@@ -669,7 +732,6 @@ footer {
     header .logout {
         display: inline-block;
     }
-
     .prev, .next {
         padding: 12px;
         font-size: 18px;

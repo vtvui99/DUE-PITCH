@@ -14,7 +14,11 @@
         <div class="container">
             <a class="logo" href="index.html"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
             <div class="header-right">
-                <a class="logout" href="login.html">Đăng Xuất</a>
+                <button onclick="dropdownMenu()" class="dropdown-button">Tên người dùng</button>
+                <div id="dropdown" class="dropdown-content">
+                  <a href="#">Thiết lập tài khoản</a>
+                  <a href="login.html">Đăng xuất</a>
+                </div>
             </div>
         </div> 
     </header>
@@ -34,7 +38,7 @@
                     <h3 class="title">Đăng ký sân</h3>
                     <a class="go-back" onclick="alertConfirm()"><i class="fas fa-arrow-left"></i>Quay lại</a>
                 </div>
-                <form class="my-form" autocomplete="off">
+                <form class="my-form" autocomplete="off" onsubmit="alert('Đăng ký thành công')">
                     <h3>Thông Tin Đặt Sân</h3>
                     <hr>
                 
@@ -73,11 +77,11 @@
                     
                     <div>
                         <input type="checkbox" id="check-again" name="check-again" required>
-                        <label for="check-again">Đã đọc kỹ <a href="index.html">quy định</a> trước khi đặt sân.</label>
+                        <label for="check-again">Đã đọc kỹ <a href="index.html" target="_blank">quy định</a> trước khi đặt sân.</label>
                     </div>
                     
                     <div>
-                        <button type="submit" class="button-register">Đăng Ký</button>
+                        <input type="submit" class="button-register" value="Đăng Ký">
                     </div>
                 </form>
             </article>

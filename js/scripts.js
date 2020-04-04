@@ -11,23 +11,28 @@ function showYourPassword() {
 // Validate Form
 // Dùng để kiểm tra tên đăng nhập và mật khẩu có trùng với hệ thống không. Nhưng mà hiện tại chỉ đang để mặc định là admin. Về sau
 // đưa dữ liệu thật vào để kiểm tra thì sẽ thay đổi sau.
+var alertText = document.getElementById("alertText");
+document.addEventListener("keydown", function(e) {
+    if(e.target.tagName=="INPUT"){
+        alertText.style.display = "none";
+    }
+});
+
 function validateForm() {
-    // var userid = document.getElementById("userid").value;
-    // var password = document.getElementById("password").value;
-    //
-    // if (userid == "admin" && password == "admin") {
-    //     return true;
-    // }
-    //
-    // else {
-        alert("Kiểm tra lại mã sinh viên hoặc mật khẩu");
+    var userid = document.getElementById("userid").value;
+    var password = document.getElementById("password").value;
+    if (userid == "admin" && password == "admin") {
+        return true;
+    }
+    else {
+        alertText.innerHTML = "Kiểm tra lại mã sinh viên hoặc mật khẩu";
+        alertText.style.display = "block";
         return false;
-    // }
+    }
 }
 
 // Slideshow
 var slideIndex = 1;
-
 function prevSlide(n) {
     showSlides(slideIndex += n);
 }
@@ -58,17 +63,14 @@ function showSlides(n) {
 // Tabs Content
 function openTab(event, tabName) {
     var i, tabcontent, tablinks;
-
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
 }
@@ -198,5 +200,22 @@ function alertConfirm() {
     var verify = confirm("Xác nhận thoát khỏi trang");
     if (verify == true) {
         goBack();
+    }
+}
+
+// Dropdown Menu
+function dropdownMenu() {
+    document.getElementById("dropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-button')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
     }
 }
