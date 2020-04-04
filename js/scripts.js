@@ -73,31 +73,15 @@ function openTab(event, tabName) {
     event.currentTarget.className += " active";
 }
 
-// Go Back
-function goBack() {
-    window.history.back();
-}
-
-// Submit Regist
-function regist() {
-    var anchors = document.getElementsByClassName('button-regist');
-    for(var i = 0; i < anchors.length; i++) {
-        var anchor = anchors[i];
-        anchor.onclick = function() {
-            window.location = "regist-form.html";
-        }
-    }
-}
-
 // Calendar
 function calendarDetails() {
-    let calendar = new VanillaCalendar({
+    var calendar = new VanillaCalendar({
         selector: "#myCalendar",
         months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         shortWeekday: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
         pastDates: false,
         onSelect: (data, elem) => {
-            let daysConvert = "", monthsConvert = "";
+            var daysConvert = "", monthsConvert = "";
             switch (data.date.toString().slice(0, 3)) {
                 case "Sun":
                     daysConvert = "Chủ Nhật";
@@ -160,10 +144,10 @@ function calendarDetails() {
                     monthsConvert = "12";
                     break;
             };
-            let daydetails = (daysConvert + " " + data.date.toString().slice(8, 10) + "/" + monthsConvert + "/" + data.date.toString().slice(11, 15));
+            var daydetails = (daysConvert + " " + data.date.toString().slice(8, 10) + "/" + monthsConvert + "/" + data.date.toString().slice(11, 15));
             alert("Bạn đang chọn " + daydetails);
-            let setValue = localStorage.setItem("storageDays", daydetails);
-            let getValue = localStorage.getItem("storageDays", daydetails);
+            var setValue = localStorage.setItem("storageDays", daydetails);
+            var getValue = localStorage.getItem("storageDays", daydetails);
             if (getValue.slice(0, -11) === "Thứ Bảy" || getValue.slice(0, -11) === "Chủ Nhật") {
                 window.location = "regist-timetable-2.html";
             }
@@ -175,6 +159,22 @@ function calendarDetails() {
 var getValue = localStorage.getItem("storageDays");
 function getTimes() {
     document.getElementById("timedetails").innerHTML = getValue;
+}
+
+// Go Back
+function goBack() {
+    window.history.back();
+}
+
+// Submit Regist
+function regist() {
+    var anchors = document.getElementsByClassName('button-regist');
+    for(var i = 0; i < anchors.length; i++) {
+        var anchor = anchors[i];
+        anchor.onclick = function() {
+            window.location = "regist-form.html";
+        }
+    }
 }
 
 // Edit Warning Text
@@ -192,3 +192,11 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 })
+
+// Alert Confirm
+function alertConfirm() {
+    var verify = confirm("Xác nhận thoát khỏi trang");
+    if (verify == true) {
+        goBack();
+    }
+}
