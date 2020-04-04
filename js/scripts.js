@@ -12,18 +12,18 @@ function showYourPassword() {
 // Dùng để kiểm tra tên đăng nhập và mật khẩu có trùng với hệ thống không. Nhưng mà hiện tại chỉ đang để mặc định là admin. Về sau
 // đưa dữ liệu thật vào để kiểm tra thì sẽ thay đổi sau.
 function validateForm() {
-    var userid = document.getElementById("userid").value;
-    var password = document.getElementById("password").value;
-
-    if (userid == "admin" && password == "admin") {
-        return true;
-    }
-
-    else {
+    // var userid = document.getElementById("userid").value;
+    // var password = document.getElementById("password").value;
+    //
+    // if (userid == "admin" && password == "admin") {
+    //     return true;
+    // }
+    //
+    // else {
         alert("Kiểm tra lại mã sinh viên hoặc mật khẩu");
         return false;
-    }
-} 
+    // }
+}
 
 // Slideshow
 var slideIndex = 1;
