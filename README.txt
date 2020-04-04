@@ -30,19 +30,17 @@ UPDATE 31/3/2020:
 *****************************
 Thêm các trang Calendar, Timetable + Form
 
-<<<<<<< HEAD
-04/04/2020
-Login: Done 
-
-=======
 UPDATE 1/4/2020:
 *****************************
 Sửa lại file README.txt
->>>>>>> ddcd28e10c0ec2acea6a4fa7b0a2b50a534aa5a0
 
 UPDATE 2/4/2020:
 *****************************
 Thêm alert khi yêu cầu thoát khỏi trang đăng ký form
+
+UPDATE 4/4/2020:
+*****************************
+Login: Almost Done (chưa thêm được alert khi đăng nhập sai)
 
 
 
