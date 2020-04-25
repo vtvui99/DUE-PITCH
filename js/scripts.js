@@ -147,7 +147,6 @@ function calendarDetails() {
                     break;
             };
             var daydetails = (daysConvert + " " + data.date.toString().slice(8, 10) + "/" + monthsConvert + "/" + data.date.toString().slice(11, 15));
-            alert("Bạn đang chọn " + daydetails);
             var setValue = localStorage.setItem("storageDays", daydetails);
             var getValue = localStorage.getItem("storageDays", daydetails);
             if (getValue.slice(0, -11) === "Thứ Bảy" || getValue.slice(0, -11) === "Chủ Nhật") {

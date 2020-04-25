@@ -1,5 +1,49 @@
 <?php
     include "session.php";
+
+    //connect
+    $conn = mysqli_connect('localhost', 'root', '', 'duepitch');
+
+    //check connect
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_errno();
+    }
+    function prints($tab){
+        $saveid = $_SESSION['saveid'];
+        //echo $saveid;
+        $conn = mysqli_connect('localhost', 'root', '', 'duepitch');
+        $sql = "SELECT `Date`, `TimeSlot`, `RegistDate` FROM `$tab` WHERE student_id = '$saveid'";
+        $query = mysqli_query($conn, $sql) ;
+        //$row = mysqli_fetch_assoc($query);
+
+        //Kiem tra co lich dang ki khong
+        if (mysqli_num_rows($query) > 0){
+            $stt = 1;
+            echo "<table>";
+            echo "<tr>";
+            echo "<th class='tableId'>STT</th>";
+            echo "<th class='tableDay'>NGÀY</th>";
+            echo "<th class='tableTime'>GIỜ</th>";
+            echo "<th class='tableDate'>THỜI GIAN ĐĂNG KÍ</th>";
+            echo "</tr>";
+
+            //in du lieu ra tren tung dong
+            while ($row = mysqli_fetch_assoc($query)){
+                echo "<tr>";
+                echo "<td class='tableId'>" .$stt ."</td>";
+                echo "<td class='tableDay'>" .$row["Date"] ."</td>";
+                echo "<td class='tableTime'>" .$row["TimeSlot"] ."</td>";
+                echo "<td class='tableDate'>" .$row["RegistDate"] ."</td>";
+                echo "</tr>";
+                $stt++;
+            }
+            echo "</table>";
+        }
+        else{
+            echo "Không có lịch đăng kí ở sân";
+        }
+    }
+    mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +81,17 @@
         <article class="main-content">
             <div class="header">
                 <h3 class="title">Sân đã đăng ký</h3>
-                <div><?php echo "" ?></div>
+            </div>
+            <div class="tables">
+                <?php
+                    // Kiem tra va in lich san 1
+                    echo "<h1>SÂN 1</h1>";
+                    prints("book1");
+
+                    // Kiem tra va in lich san 2
+                    echo "<h1>SÂN 2</h1>";
+                    prints("book2");
+                ?>
             </div>
         </article>
     </div>
