@@ -3,8 +3,10 @@
 ?>
 <?php 
 $mysqli=new mysqli('localhost','root','','datapitch');
+
 $mysqli->query("SET NAMES 'utf8'");
 $stmt = $mysqli->query("SELECT * FROM table_name", MYSQLI_STORE_RESULT);
+
 if(isset($_GET['date'])){
   $date=$_GET['date'];
   $stmt=$mysqli->prepare("select*from book2 where date=?");
@@ -16,7 +18,6 @@ if(isset($_GET['date'])){
       while($row=$result->fetch_assoc()){
         $bookings[]=$row['timeslot'];
       }
-
       $stmt->close();
     }
   }
@@ -50,8 +51,6 @@ if(isset($_POST['submit'])){
 
     }
   }
-  
-  
 }
 
 $duration=60;
@@ -80,11 +79,7 @@ function timeslots($duration,$cleanup,$start,$end){
 
   return $slots;
 
-
 }
-
-
-
 ?>
 
 
@@ -109,7 +104,7 @@ function timeslots($duration,$cleanup,$start,$end){
 		  text-decoration: none;
 
 		}
-	</style>
+    </style>
   </head>
   <body>
     <div class="container">
@@ -127,9 +122,7 @@ function timeslots($duration,$cleanup,$start,$end){
              <button class="btn btn-danger"><?php echo $ts;?></button>
             <?php }else{ ?>
              <button class="btn btn-success book" data-timeslot="<?php echo $ts;?>"><?php echo $ts;?></button>
-
             <?php } ?>
-            
            </div>
          </div>
          <?php } ?>
@@ -161,10 +154,11 @@ function timeslots($duration,$cleanup,$start,$end){
                       <label for="">Lớp: </label>
                       <b><?php echo $_SESSION['saveclass']; ?></b>
                     </div>
-                      <div class="form-group">
+			  
+                    <div class="form-group">
                           <label for="">Mã sinh viên: </label>
                           <b><?php echo $_SESSION['saveid']; ?></b>
-                      </div>
+                    </div>
 
                     <div class="form-group">
                       <label for="">Số điện thoại liên hệ: </label>
@@ -190,25 +184,24 @@ function timeslots($duration,$cleanup,$start,$end){
               </div>
           </div>
     </div>
-
   </div>
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7I2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-   <script>
-    $(".book").click(function(){
+    <script>
+      $(".book").click(function(){
       var timeslot=$(this).attr('data-timeslot');
       $("#slot").html(timeslot);
       $("#timeslot").val(timeslot);
       $("#myModal").modal("show");
-    }) 
+     }) 
     </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </body>
   <footer>
      <h3><button><a href="calendar2.php">Back</a></button></h3>
-</footer>
+  </footer>
 </html>
 </html>
