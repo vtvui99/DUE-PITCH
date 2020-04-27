@@ -3,20 +3,23 @@
 ?>
 <?php 
 $mysqli=new mysqli('localhost','root','','datapitch');
+
 $mysqli->query("SET NAMES 'utf8'");
 $stmt = $mysqli->query("SELECT * FROM table_name", MYSQLI_STORE_RESULT);
+
 if(isset($_GET['date'])){
+	
   $date=$_GET['date'];
   $stmt=$mysqli->prepare("select*from book1 where date=?");
   $stmt->bind_param('s',$date);
   $bookings=array();
   if($stmt->execute()){
+	  
     $result=$stmt->get_result();
-    if($result->num_rows>0){
+    if($result->num_rows>0){    
       while($row=$result->fetch_assoc()){
         $bookings[]=$row['timeslot'];
       }
-
       $stmt->close();
     }
   }
@@ -30,8 +33,10 @@ if(isset($_POST['submit'])){
   $phone1=$_POST['phone1'];
   $phone2=$_POST['phone2'];
   $purpose=$_POST['purpose'];
+	
   $stmt=$mysqli->prepare("select*from book1 where date=? AND timeslot=?");
   $stmt->bind_param('ss',$date,$timeslot);
+	
   if($stmt->execute()){
     $result=$stmt->get_result();
     if($result->num_rows>0){
@@ -47,9 +52,7 @@ if(isset($_POST['submit'])){
   $mysqli->close();
 
     }
-  }
-  
-  
+  } 
 }
 
 $duration=60;
@@ -100,15 +103,17 @@ function timeslots($duration,$cleanup,$start,$end){
 		}
 	</style>
 	
-  </head>
+ </head>
   <body>
     <div class="container">
       <h1 class="text-center">Ngày đang chọn: <?php echo date('m/d/Y',strtotime($date)); ?></h1><hr>
       <div class="row">
+	      
         <div class="col-md-12">
           <?php echo isset($msg)?$msg:""; ?>
         </div>
-         <?php $timeslots=timeslots($duration,$cleanup,$start,$end);
+	      
+        <?php $timeslots=timeslots($duration,$cleanup,$start,$end);
           foreach($timeslots as $ts){
          ?>
          <div class="col-md-2">
@@ -117,13 +122,11 @@ function timeslots($duration,$cleanup,$start,$end){
              <button class="btn btn-danger"><?php echo $ts;?></button>
             <?php }else{ ?>
              <button class="btn btn-success book" data-timeslot="<?php echo $ts;?>"><?php echo $ts;?></button>
-
             <?php } ?>
-
            </div>
          </div>
-         <?php } ?>
-      </div>
+           <?php } ?>
+       </div>
     </div>
 
     <div id="myModal" class="modal fade" role="dialog">
@@ -142,7 +145,7 @@ function timeslots($duration,$cleanup,$start,$end){
                       <input required type="text" readonly name="timeslot" id="timeslot" class="form-control">
                     </div>
 					
-					<div class="form-group">
+		    <div class="form-group">
                       <label for="">Họ và tên: </label>
                       <b><?php echo $_SESSION['login_user']; ?></b>
                     </div>
@@ -151,10 +154,11 @@ function timeslots($duration,$cleanup,$start,$end){
                       <label for="">Lớp: </label>
                       <b><?php echo $_SESSION['saveclass']; ?></b>
                     </div>
-                      <div class="form-group">
+			  
+                    <div class="form-group">
                           <label for="">Mã sinh viên: </label>
                           <b><?php echo $_SESSION['saveid']; ?></b>
-                      </div>
+                    </div>
 
                     <div class="form-group">
                       <label for="">Số điện thoại liên hệ: </label>
@@ -180,23 +184,22 @@ function timeslots($duration,$cleanup,$start,$end){
               </div>
           </div>
     </div>
-
   </div>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7I2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-   <script>
-    $(".book").click(function(){
+    <script>
+      $(".book").click(function(){
       var timeslot=$(this).attr('data-timeslot');
       $("#slot").html(timeslot);
       $("#timeslot").val(timeslot);
       $("#myModal").modal("show");
-    }) 
+     }) 
     </script>   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </body>
   <footer>
      <h3><button><a href="calendar1.php">Quay lại</a></button></h3>
-</footer>
+  </footer>
 </html>
