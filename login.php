@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (isset($_POST['login'])) {
-    $conn = mysqli_connect('localhost', 'root', '123456', 'datapitch');
+    $conn = mysqli_connect('localhost', 'root', '', 'datapitch');
+	$conn->query("SET NAMES 'utf8'");
     //check connect
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_errno();
@@ -9,7 +10,7 @@ if (isset($_POST['login'])) {
     $username = addslashes($_POST['userid']);
     $password = addslashes($_POST['password']);
 
-    $query = mysqli_query($conn, "SELECT S_name FROM account WHERE id='$username' AND password='$password' ");
+    $query = mysqli_query($conn, "SELECT S_name, S_class FROM account WHERE id='$username' AND password='$password' ");
     $count = mysqli_num_rows($query);
 
     // show name
@@ -17,7 +18,9 @@ if (isset($_POST['login'])) {
     //$error = array();
     if ($count != 0) {
         $_SESSION['login_user']=$row["S_name"];
+		$_SESSION['saveclass']=$row["S_class"];
         $_SESSION['saveid']=$username;
+		
         header("location:index.php");
     } else{
         header( "refresh:0;url=login.php" );

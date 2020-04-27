@@ -1,5 +1,8 @@
+<?php
+    include("session.php");
+?>
 <?php 
-$mysqli=new mysqli('localhost','root','','duepitch');
+$mysqli=new mysqli('localhost','root','','datapitch');
 $mysqli->query("SET NAMES 'utf8'");
 $stmt = $mysqli->query("SELECT * FROM table_name", MYSQLI_STORE_RESULT);
 if(isset($_GET['date'])){
@@ -20,10 +23,10 @@ if(isset($_GET['date'])){
 }
 
 if(isset($_POST['submit'])){
-  $name=$_POST['name'];
-  $student_id=$_POST['student_id'];
+  $name=$_SESSION['login_user'];
+  $student_id=$_SESSION['saveid'];
   $timeslot=$_POST['timeslot'];
-  $class=$_POST['class'];
+  $class=$_SESSION['saveclass'];
   $phone1=$_POST['phone1'];
   $phone2=$_POST['phone2'];
   $purpose=$_POST['purpose'];
@@ -68,18 +71,10 @@ function timeslots($duration,$cleanup,$start,$end){
     if($endPeriod>$end){
       break;
     }
-
     $slots[]=$intStart->format("H:iA")."-".$endPeriod->format("H:iA");
-
   }
-
   return $slots;
-
-
 }
-
-
-
 ?>
 
 
@@ -89,7 +84,7 @@ function timeslots($duration,$cleanup,$start,$end){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Booking</title>
+    <title>Đặt lịch</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
 	<style>
@@ -108,7 +103,7 @@ function timeslots($duration,$cleanup,$start,$end){
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center">Book for Date:<?php echo date('m/d/Y',strtotime($date)); ?></h1><hr>
+      <h1 class="text-center">Ngày đang chọn: <?php echo date('m/d/Y',strtotime($date)); ?></h1><hr>
       <div class="row">
         <div class="col-md-12">
           <?php echo isset($msg)?$msg:""; ?>
@@ -125,8 +120,6 @@ function timeslots($duration,$cleanup,$start,$end){
 
             <?php } ?>
 
-
-            
            </div>
          </div>
          <?php } ?>
@@ -138,45 +131,45 @@ function timeslots($duration,$cleanup,$start,$end){
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Booking:<span id="slot"></span></h4>
+            <h4 class="modal-title">Chọn lịch: <span id="slot"></span></h4>
           </div>
           <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
                   <form action="" method="post">
                     <div class="form-group">
-                      <label for="">Timeslot</label>
+                      <label for="">Khung giờ: </label>
                       <input required type="text" readonly name="timeslot" id="timeslot" class="form-control">
                     </div>
-                    <div class="form-group">
-                      <label for="">Name</label>
-                      <input required type="text" name="name" class="form-control">
+					
+					<div class="form-group">
+                      <label for="">Họ và tên: </label>
+                      <b><?php echo $_SESSION['login_user']; ?></b>
                     </div>
+                    
+                    <div class="form-group">
+                      <label for="">Lớp: </label>
+                      <b><?php echo $_SESSION['saveclass']; ?></b>
+                    </div>
+                      <div class="form-group">
+                          <label for="">Mã sinh viên: </label>
+                          <b><?php echo $_SESSION['saveid']; ?></b>
+                      </div>
 
                     <div class="form-group">
-                      <label for="">Class</label>
-                      <input required type="text" name="class" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="">Phone1</label>
+                      <label for="">Số điện thoại liên hệ: </label>
                       <input required type="text" name="phone1" class="form-control">
                     </div>
 
                     <div class="form-group">
-                      <label for="">Phone2</label>
-                      <input required type="text" name="phone2" class="form-control">
+                      <label for="">Số điện thoại dự phòng: </label>
+                      <input type="text" name="phone2" class="form-control">
                     </div>
 
                     <div class="form-group">
-                      <label for="">Purpose</label><br>
-                      <input required type="radio" name="purpose" value="Tổ chức giải đấu khoa" >Tổ chức giải đấu khoa<br>
-                      <input required type="radio" name="purpose" value="Đá giao hữu">Đá giao hữu
-                    </div>
-
-                    <div class="form-group">
-                      <label for="">Student ID</label>
-                      <input required type="text" name="student_id" class="form-control">
+                      <label for="">Mục đích: </label><br>
+                      <input required type="radio" name="purpose" value="0" >Tổ chức giải đấu khoa<br>
+                      <input required type="radio" name="purpose" value="1">Đá giao hữu
                     </div>
 
                     <div class="form-group pull-right">
@@ -185,9 +178,6 @@ function timeslots($duration,$cleanup,$start,$end){
                   </form>
                 </div>
               </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
     </div>
 
@@ -207,6 +197,6 @@ function timeslots($duration,$cleanup,$start,$end){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </body>
   <footer>
-     <h3><button><a href="calendar1.php">Back</a></button></h3>
+     <h3><button><a href="calendar1.php">Quay lại</a></button></h3>
 </footer>
 </html>

@@ -2,7 +2,7 @@
     include "session.php";
 
     //connect
-    $conn = mysqli_connect('localhost', 'root', '', 'duepitch');
+    $conn = mysqli_connect('localhost', 'root', '', 'datapitch');
 
     //check connect
     if (mysqli_connect_errno()) {
@@ -11,8 +11,8 @@
     function prints($tab){
         $saveid = $_SESSION['saveid'];
         //echo $saveid;
-        $conn = mysqli_connect('localhost', 'root', '', 'duepitch');
-        $sql = "SELECT `Date`, `TimeSlot`, `RegistDate` FROM `$tab` WHERE student_id = '$saveid'";
+        $conn = mysqli_connect('localhost', 'root', '', 'datapitch');
+        $sql = "SELECT `date`, `timeslot`, `registdate` FROM `$tab` WHERE student_id = '$saveid'";
         $query = mysqli_query($conn, $sql) ;
         //$row = mysqli_fetch_assoc($query);
 
@@ -31,9 +31,11 @@
             while ($row = mysqli_fetch_assoc($query)){
                 echo "<tr>";
                 echo "<td class='tableId'>" .$stt ."</td>";
-                echo "<td class='tableDay'>" .$row["Date"] ."</td>";
-                echo "<td class='tableTime'>" .$row["TimeSlot"] ."</td>";
-                echo "<td class='tableDate'>" .$row["RegistDate"] ."</td>";
+                $date = date_create($row["date"]);
+                echo "<td class='tableDay'>" .date_format($date, "d-m-Y") ."</td>";
+                echo "<td class='tableTime'>" .$row["timeslot"] ."</td>";
+                $datetime = date_create($row["registDate"]);
+                echo "<td class='tableDate'>" .date_format($datetime, "d-m-Y H:i:s") ."</td>";
                 echo "</tr>";
                 $stt++;
             }
@@ -74,7 +76,7 @@
             <h3 class="title">Sân bóng</h3>
             <ul>
                 <li><a href="index.php">Trang Chủ</a></li>
-                <li><a href="regist-calendar.php">Đăng Ký</a></li>
+                <li><a href="dangky.php">Đăng Ký</a></li>
                 <li><a class="current" href="registered.php">Lịch Đã Đăng Ký</a></li>
             </ul>
         </aside>

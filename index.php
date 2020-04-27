@@ -49,7 +49,7 @@
             <h3 class="title">Sân bóng</h3>
             <ul>
                 <li><a class="current" href="index.php">Trang Chủ</a></li>
-                <li><a href="regist-calendar.php">Đăng Ký</a></li>
+                <li><a href="dangky.php">Đăng Ký</a></li>
                 <li><a href="registered.php">Lịch Đã Đăng Ký</a></li>
             </ul>
         </aside>

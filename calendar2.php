@@ -1,7 +1,9 @@
-
+<?php
+    include("session.php");
+?>
 <?php 
 function build_calendar($month,$year){
-	$mysqli=new mysqli('localhost','root','','duepitch');
+	$mysqli=new mysqli('localhost','root','','datapitch');
 	$daysOfWeek=array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
 	$firstDayOfMonth=mktime(0,0,0,$month,1,$year);
 	$numberDays=date('t',$firstDayOfMonth);
@@ -167,6 +169,6 @@ function checkSlots($mysqli,$date){
 	</div>
 </body>
 <footer>
-     <h3><button><a href="dangky.php">Back</a></button></h3>
+     <h3><button><a href="dangky.php">Quay lại</a></button></h3>
 </footer>
 </html>

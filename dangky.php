@@ -5,15 +5,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Ký</title>
+    <title>Đặt sân</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/all.css">
-    <link rel="stylesheet" href="./css/vanilla-calendar.css">
-    <script src="./js/vanilla-calendar.js"></script>
+    <style type="text/css">
+        body{
+
+        }
+        .form-box{
+            width: 500px;
+            background: darkblue;
+            margin: 12% auto;
+            padding: 50px 0;
+            color: #fff;
+            box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+        }
+        .containers{
+        margin: 0 30%;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 40px;
+        }
+        .containers a{
+            text-decoration: none;
+            color:white;
+        }
+        .btn btn-primary btn a{
+            margin-left: 500px;
+        }
+        .footer a{
+            padding-top: 10px;
+        }
+        h3{
+            text-align: center;
+            margin-top:-100px;
+            text-decoration: none;
+        }
+        h3 a{
+            color: red;
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body onload="calendarDetails()">
+<body onload="showSlides(slideIndex)">
 <header>
     <div class="container">
         <a class="logo" href="index.php"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
@@ -26,28 +67,26 @@
         </div>
     </div>
 </header>
-
 <section class="main">
     <div class="container">
-        <aside class="navbar">
-            <h3 class="title">Sân bóng</h3>
-            <ul>
-                <li><a href="index.php">Trang Chủ</a></li>
-                <li><a class="current" href="regist-calendar.php">Đăng Ký</a></li>
-                <li><a href="registered.php">Lịch Đã Đăng Ký</a></li>
-            </ul>
-        </aside>
-        <article class="main-content">
-            <div class="header">
-                <h3 class="title">Đăng ký sân</h3>
-            </div>
-            <div class="content">
-                <div id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
-            </div>
-        </article>
+    <aside class="navbar">
+        <h3 class="title">Sân bóng</h3>
+        <ul>
+            <li><a href="index.php">Trang Chủ</a></li>
+            <li><a class="current" href="dangky.php">Đăng Ký</a></li>
+            <li><a href="registered.php">Lịch Đã Đăng Ký</a></li>
+        </ul>
+    </aside>
+    <div class="form-box">
+        <h1>Mời bạn chọn sân để đặt!</h1>
+        <div class="containers">
+<!--            <h2>SÂN BÓNG!</h2>-->
+            <button type="button" class="btn btn-primary btn-lg"><a href="calendar1.php">SÂN 1</a></button>
+            <button type="button" class="btn btn-primary btn-lg"><a href="calendar2.php">SÂN 2</a></button>    
+        </div>
+    </div>
     </div>
 </section>
-
 <footer>
     <div class="container">
         <div class="footer-content">
@@ -83,6 +122,7 @@
         </div>
     </div>
 </footer>
+<!--     <h3><button><a href="index.php">Quay lại</a></button></h3>-->
 
 <script type="text/javascript" src="./js/scripts.js"></script>
 </body>
