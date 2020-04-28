@@ -579,6 +579,39 @@ header .header-right {
     justify-content: center;
 }
 
+/* Modal */
+#myModal .modal-body .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#myModal .modal-body .form-group label {
+    display: inline-block;
+    flex-basis: 20%;
+    text-align: left;
+}
+
+#myModal .modal-body .purpose label {
+    flex-basis: 100%;
+    margin-left: 20px;
+}
+
+#myModal .modal-body .purpose div {
+    flex-basis: 50%;
+    text-align: left;
+    margin: 0 auto;
+}
+
+#myModal .modal-body .purpose div input {
+    margin-right: -15px;
+}
+
+#myModal .modal-body .form-group input, #myModal .modal-body .form-group b {
+    text-align: left;
+    flex-basis: 70%;
+}
+
 /* Registered */
 .tables {
     width: 80%;
@@ -723,6 +756,10 @@ footer {
     .prev, .next {
         padding: 15px;
         font-size: 20px;
+    }
+
+    #myModal .modal-body .col-md-12 {
+        width: 100%;
     }
     
     .footer-content .links,.footer-content .information, .footer-content .connection {

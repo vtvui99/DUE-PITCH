@@ -189,14 +189,18 @@ function timeslots($duration,$cleanup,$start,$end){
                                     <input type="text" name="phone2" class="form-control">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group purpose">
                                     <label for="">Mục đích: </label><br>
-                                    <input required type="radio" name="purpose" value="0"> Tổ chức giải đấu khoa<br>
-                                    <input required type="radio" name="purpose" value="1"> Đá giao hữu
+                                    <div>
+                                        <input required type="radio" name="purpose" value="0">
+                                        <label for="">Tổ chức giải đấu khoa</label><br>
+                                        <input required type="radio" name="purpose" value="1">
+                                        <label for="">Đá giao hữu</label><br>
+                                    </div>
                                 </div>
 
                                 <div class="form-group pull-right">
-                                    <button class="btn btn-primary" type="submit" name="submit">Đăng kí</button>
+                                    <button class="btn btn-primary" type="submit" name="submit">Đăng ký</button>
                                 </div>
                             </form>
                         </div>
