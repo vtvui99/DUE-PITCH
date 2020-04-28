@@ -22,10 +22,6 @@ a:hover {
     text-decoration: none;
 }
 
-a:visited {
-    color: #0C74C6;
-}
-
 button {
     border: none;
     outline: none;
@@ -373,6 +369,11 @@ header .header-right {
     font-size: 19px;
     font-weight: 600;
     text-align: center;
+}
+
+/* Table */
+.row .col-md-12 .table .btn {
+    color: white;
 }
 
 /* Tab Content */

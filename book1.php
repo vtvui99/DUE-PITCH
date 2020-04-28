@@ -206,7 +206,7 @@ function timeslots($duration,$cleanup,$start,$end){
         </div>
     </div>
     <div class="container" style="text-align: center; margin-bottom: 15px;">
-        <button class="back"><a href="dangky.php">Quay lại</a></button>
+        <button class="back"><a href="calendar1.php">Quay lại</a></button>
     </div>
     <footer>
         <div class="container">

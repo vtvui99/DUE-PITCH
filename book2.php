@@ -200,7 +200,7 @@ function timeslots($duration,$cleanup,$start,$end){
                                 </div>
 
                                 <div class="form-group pull-right">
-                                    <button class="btn btn-primary" type="submit" name="submit">Đăng ký</button>
+                                    <button class="btn btn-primary" type="submit" name="submit">Đăng kí</button>
                                 </div>
                             </form>
                         </div>
@@ -211,7 +211,7 @@ function timeslots($duration,$cleanup,$start,$end){
         </div>
     </div>
     <div class="container" style="text-align: center; margin-bottom: 15px;">
-        <button class="back"><a href="dangky.php">Quay lại</a></button>
+        <button class="back"><a href="calendar2.php">Quay lại</a></button>
     </div>
     <footer>
         <div class="container">
