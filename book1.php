@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
       $stmt=$mysqli->prepare("INSERT INTO book1 (name,timeslot,student_id,class,phone1,phone2,purpose,date) VALUES (?,?,?,?,?,?,?,?)");
   $stmt->bind_param('ssssssss',$name,$timeslot,$student_id,$class,$phone1,$phone2, $purpose,$date);
   $stmt->execute();
-  $msg="<div class='alert alert-success'>Booking Successfull</div>";
+  $msg="<div class='alert alert-success'>Đặt lịch thành công</div>";
   $bookings[]=$timeslot;
   $stmt->close();
   $mysqli->close();
@@ -80,123 +80,180 @@ function timeslots($duration,$cleanup,$start,$end){
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Đặt lịch</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
-	<style>
-		h3{
-		  text-align: center;
-		  margin-top:50px;  
-		  text-decoration: none;
- 
-		}
-		h3 a{
-		  color: red;
-		  text-decoration: none;
-		}
-	</style>
-	
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="text-center">Ngày đang chọn: <?php echo date('m/d/Y',strtotime($date)); ?></h1><hr>
-      <div class="row">
-        <div class="col-md-12">
-          <?php echo isset($msg)?$msg:""; ?>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/all.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="logo" href="index.php"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
+            <div class="header-right">
+                <button onclick="dropdownMenu()" class="dropdown-button"><?php echo $_SESSION['login_user']; ?></button>
+                <div id="dropdown" class="dropdown-content">
+                    <a href="#">Thiết lập tài khoản</a>
+                    <a href="login.php">Đăng xuất</a>
+                </div>
+            </div>
         </div>
-         <?php $timeslots=timeslots($duration,$cleanup,$start,$end);
+    </header>
+    <section class="main">
+        <div class="container">
+            <aside class="navbar" style="display: inline-block; margin: 20px 0 -20px;">
+                <h3 class="title">Lịch đặt sân</h3>
+                <ul>
+                    <li><a href="index.php">Trang Chủ</a></li>
+                    <li><a class="current" href="dangky.php">Đăng Ký</a></li>
+                    <li><a href="registered.php">Lịch Đã Đăng Ký</a></li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+    <div class="container">
+        <h1 class="text-center">Ngày đang chọn: <?php echo date('m/d/Y',strtotime($date)); ?></h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo isset($msg)?$msg:""; ?>
+            </div>
+            <?php $timeslots=timeslots($duration,$cleanup,$start,$end);
           foreach($timeslots as $ts){
          ?>
-         <div class="col-md-2">
-           <div class="form-group">
-            <?php if(in_array($ts,$bookings)){?>
-             <button class="btn btn-danger"><?php echo $ts;?></button>
-            <?php }else{ ?>
-             <button class="btn btn-success book" data-timeslot="<?php echo $ts;?>"><?php echo $ts;?></button>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <?php if(in_array($ts,$bookings)){?>
+                    <button class="btn btn-danger"><?php echo $ts;?></button>
+                    <?php }else{ ?>
+                    <button class="btn btn-success book" data-timeslot="<?php echo $ts;?>"><?php echo $ts;?></button>
 
+                    <?php } ?>
+
+                </div>
+            </div>
             <?php } ?>
-
-           </div>
-         </div>
-         <?php } ?>
-      </div>
+        </div>
     </div>
 
     <div id="myModal" class="modal fade" role="dialog">
-       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Chọn lịch: <span id="slot"></span></h4>
-          </div>
-          <div class="modal-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <form action="" method="post">
-                    <div class="form-group">
-                      <label for="">Khung giờ: </label>
-                      <input required type="text" readonly name="timeslot" id="timeslot" class="form-control">
-                    </div>
-					
-					<div class="form-group">
-                      <label for="">Họ và tên: </label>
-                      <b><?php echo $_SESSION['login_user']; ?></b>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="">Lớp: </label>
-                      <b><?php echo $_SESSION['saveclass']; ?></b>
-                    </div>
-                      <div class="form-group">
-                          <label for="">Mã sinh viên: </label>
-                          <b><?php echo $_SESSION['saveid']; ?></b>
-                      </div>
-
-                    <div class="form-group">
-                      <label for="">Số điện thoại liên hệ: </label>
-                      <input required type="text" name="phone1" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="">Số điện thoại dự phòng: </label>
-                      <input type="text" name="phone2" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="">Mục đích: </label><br>
-                      <input required type="radio" name="purpose" value="0" >Tổ chức giải đấu khoa<br>
-                      <input required type="radio" name="purpose" value="1">Đá giao hữu
-                    </div>
-
-                    <div class="form-group pull-right">
-                      <button class="btn btn-primary" type="submit" name="submit">Submit</button>
-                    </div>
-                  </form>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Chọn lịch: <span id="slot"></span></h4>
                 </div>
-              </div>
-          </div>
-    </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="">Khung giờ: </label>
+                                    <input required type="text" readonly name="timeslot" id="timeslot"
+                                        class="form-control">
+                                </div>
 
-  </div>
-</div>
+                                <div class="form-group">
+                                    <label for="">Họ và tên: </label>
+                                    <b><?php echo $_SESSION['login_user']; ?></b>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Lớp: </label>
+                                    <b><?php echo $_SESSION['saveclass']; ?></b>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Mã sinh viên: </label>
+                                    <b><?php echo $_SESSION['saveid']; ?></b>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Số điện thoại liên hệ: </label>
+                                    <input required type="text" name="phone1" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Số điện thoại dự phòng: </label>
+                                    <input type="text" name="phone2" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Mục đích: </label><br>
+                                    <input required type="radio" name="purpose" value="0">Tổ chức giải đấu khoa<br>
+                                    <input required type="radio" name="purpose" value="1">Đá giao hữu
+                                </div>
+
+                                <div class="form-group pull-right">
+                                    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-bottom: 15px;">
+        <button class="back"><a href="dangky.php">Quay lại</a></button>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="information">
+                    <h3>Thông tin tuyển sinh</h3>
+                    <ul>
+                        <li><a href="#">Kế hoạch tuyển sinh</a></li>
+                        <li><a href="#">Các chương trình đào tạo</a></li>
+                        <li><a href="#">Điều kiện giảng dạy</a></li>
+                        <li><a href="#">Tư vấn tuyển sinh</a></li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <h3>Các liên kết khác</h3>
+                    <ul>
+                        <li><a href="#">Điều hành tác nghiệp</a></li>
+                        <li><a href="#">E-learning</a></li>
+                        <li><a href="#">Thư viện</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+                <div class="connection">
+                    <h3>Kết nối</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                        <li><a href="#"><i class="fas fa-rss"></i>RSS</a></li>
+                        <li><a href="#"><i class="fas fa-rss"></i>Linked in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                Bản quyền Trường Đại học Kinh Tế Đà Nẵng
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7I2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-   <script>
-    $(".book").click(function(){
-      var timeslot=$(this).attr('data-timeslot');
-      $("#slot").html(timeslot);
-      $("#timeslot").val(timeslot);
-      $("#myModal").modal("show");
-    }) 
-    </script>   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </body>
-  <footer>
-     <h3><button><a href="calendar1.php">Quay lại</a></button></h3>
-</footer>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7I2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+    <script>
+    $(".book").click(function() {
+        var timeslot = $(this).attr('data-timeslot');
+        $("#slot").html(timeslot);
+        $("#timeslot").val(timeslot);
+        $("#myModal").modal("show");
+    })
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
 </html>

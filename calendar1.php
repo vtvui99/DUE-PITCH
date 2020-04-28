@@ -113,42 +113,44 @@ function checkSlots($mysqli,$date){
 
 ?>
 <html>
+
 <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<style>
-		
-		table{
-			table-layout: fixed;
-		}
-
-		td{
-			width: 33%;
-		}
-
-		.today{
-			background: yellow;
-		}
-		
-		h3{
-		  text-align: center;
-		  margin-top:50px; 
-		  text-decoration: none;
- 
-		}
-		h3 a{
-		  color: red;
-		  text-decoration: none;
-
-		}
-	</style>
-	<title>Lich</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <title>Lich</title>
 </head>
+
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<?php 
+    <header>
+        <div class="container">
+            <a class="logo" href="index.php"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
+            <div class="header-right">
+                <button onclick="dropdownMenu()" class="dropdown-button"><?php echo $_SESSION['login_user']; ?></button>
+                <div id="dropdown" class="dropdown-content">
+                    <a href="#">Thiết lập tài khoản</a>
+                    <a href="login.php">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main">
+        <div class="container">
+            <aside class="navbar" style="display: inline-block; margin: 20px 0 -20px;">
+                <h3 class="title">Sân 1</h3>
+                <ul>
+                    <li><a href="index.php">Trang Chủ</a></li>
+                    <li><a class="current" href="dangky.php">Đăng Ký</a></li>
+                    <li><a href="registered.php">Lịch Đã Đăng Ký</a></li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <?php 
 				$dateComponents=getdate();
 				if(isset($_GET['month']) && isset($_GET['year'])){
 					$month=$_GET['month'];
@@ -161,11 +163,47 @@ function checkSlots($mysqli,$date){
 
 				echo build_calendar($month,$year);
 				?>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-bottom: 15px;">
+        <button class="back"><a href="dangky.php">Quay lại</a></button>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="information">
+                    <h3>Thông tin tuyển sinh</h3>
+                    <ul>
+                        <li><a href="#">Kế hoạch tuyển sinh</a></li>
+                        <li><a href="#">Các chương trình đào tạo</a></li>
+                        <li><a href="#">Điều kiện giảng dạy</a></li>
+                        <li><a href="#">Tư vấn tuyển sinh</a></li>
+                    </ul>
+                </div>
+                <div class="links">
+                    <h3>Các liên kết khác</h3>
+                    <ul>
+                        <li><a href="#">Điều hành tác nghiệp</a></li>
+                        <li><a href="#">E-learning</a></li>
+                        <li><a href="#">Thư viện</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+                <div class="connection">
+                    <h3>Kết nối</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                        <li><a href="#"><i class="fas fa-rss"></i>RSS</a></li>
+                        <li><a href="#"><i class="fas fa-rss"></i>Linked in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                Bản quyền Trường Đại học Kinh Tế Đà Nẵng
+            </div>
+        </div>
+    </footer>
 </body>
-<footer>
-     <h3><button><a href="dangky.php">Quay lại</a></button></h3>
-</footer>
+
 </html>

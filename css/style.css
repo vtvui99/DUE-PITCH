@@ -18,8 +18,21 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 a:visited {
     color: #0C74C6;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+table {
+    table-layout: fixed;
 }
 
 .container {
@@ -29,6 +42,7 @@ a:visited {
 
 .title {
     color: #0C74C6;
+    font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
     margin: 0;
@@ -37,6 +51,27 @@ a:visited {
 
 .alert {
     color: #ff1a1a;
+}
+
+.today {
+    background: yellow;
+}
+
+.back a {
+    display: block;
+    background-color: #0C74C6;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 4px;
+}
+
+.back:hover a {
+    background-color: #106CB2;
+}
+
+.text-center {
+    font-size: 24px;
+    font-weight: 700;
 }
 
 @keyframes fade {
@@ -388,6 +423,48 @@ header .header-right {
     display: none;
 }
 
+/* Form */
+.form-box {
+    width: 60%;
+    background: #106CB2;
+    margin: 12% auto 0;
+    padding: 50px 40px;
+    border-radius: 5px;
+}
+
+.form-box h2 {
+    font-size: 22px;
+    text-align: center;
+    color: white;
+}
+
+.form-box .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.form-box .form .btn {
+    background-color: #F2F2F2;
+    margin: 0 10px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+.form-box .form .btn:hover {
+    background-color: #D3D3D3;
+}
+
+.form-box .form .btn .pitch {
+    color: #0C74C6;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 15px;
+}
+
 /* Timetable */
 .main-content .timeTable{
     width: 80%;
@@ -493,6 +570,13 @@ header .header-right {
     border-radius: 3px;
     outline: none;
     cursor: pointer;
+}
+
+.row {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Registered */
@@ -640,7 +724,7 @@ footer {
         padding: 15px;
         font-size: 20px;
     }
-
+    
     .footer-content .links,.footer-content .information, .footer-content .connection {
         flex: 1;
     }
@@ -708,6 +792,27 @@ footer {
         margin: 15px auto 0 auto;
         border-radius: 2px;
         font-size: 11px;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .form-box h2 {
+        font-size: 20px;
+    }
+    
+    .form-box .form .btn {
+        padding: 12px 17px;
+    }
+    
+    .form-box .form .btn .pitch {
+        padding: 8px 12px;
+    }
+    
+    .text-center {
+        font-size: 20px;
+        font-weight: 700;
     }
 
     .main-content button.tablinks {
@@ -782,6 +887,19 @@ footer {
     .prev, .next {
         padding: 12px;
         font-size: 18px;
+    }
+
+    .form-box h2 {
+        font-size: 17px;
+    }
+    
+    .form-box .form .btn {
+        padding: 8px 13px;
+    }
+    
+    .form-box .form .btn .pitch {
+        font-size: 16px;
+        padding: 6px 9px;
     }
 
     .main-content .title {
