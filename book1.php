@@ -2,9 +2,11 @@
     include("session.php");
 ?>
 <?php 
+
 $mysqli=new mysqli('localhost','root','','datapitch');
 $mysqli->query("SET NAMES 'utf8'");
 $stmt = $mysqli->query("SELECT * FROM table_name", MYSQLI_STORE_RESULT);
+
 if(isset($_GET['date'])){
   $date=$_GET['date'];
   $stmt=$mysqli->prepare("select*from book1 where date=?");
@@ -30,21 +32,25 @@ if(isset($_POST['submit'])){
   $phone1=$_POST['phone1'];
   $phone2=$_POST['phone2'];
   $purpose=$_POST['purpose'];
+    
   $stmt=$mysqli->prepare("select*from book1 where date=? AND timeslot=?");
   $stmt->bind_param('ss',$date,$timeslot);
+    
   if($stmt->execute()){
     $result=$stmt->get_result();
     if($result->num_rows>0){
       $msg="<div class='alert alert-dangers'>Already Booked</div>";
       
-    }else{
+    }
+    else
+    {
       $stmt=$mysqli->prepare("INSERT INTO book1 (name,timeslot,student_id,class,phone1,phone2,purpose,date) VALUES (?,?,?,?,?,?,?,?)");
-  $stmt->bind_param('ssssssss',$name,$timeslot,$student_id,$class,$phone1,$phone2, $purpose,$date);
-  $stmt->execute();
-  $msg="<div class='alert alert-success'>Đặt lịch thành công</div>";
-  $bookings[]=$timeslot;
-  $stmt->close();
-  $mysqli->close();
+      $stmt->bind_param('ssssssss',$name,$timeslot,$student_id,$class,$phone1,$phone2, $purpose,$date);
+      $stmt->execute();
+      $msg="<div class='alert alert-success'>Đặt lịch thành công</div>";
+      $bookings[]=$timeslot;
+      $stmt->close();
+      $mysqli->close();
 
     }
   }
