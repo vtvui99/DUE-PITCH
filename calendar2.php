@@ -86,7 +86,6 @@ function build_calendar($month,$year){
 	 }
 
 
-
 	 $calendar.="</td>";
 
 	 $currentDay++;
