@@ -13,6 +13,10 @@ if (isset($_POST['login'])) {
     $query = mysqli_query($conn, "SELECT S_name, S_class FROM account WHERE id='$username' AND password='$password' ");
     $count = mysqli_num_rows($query);
 
+    //Check admin
+    $query2 = mysqli_query($conn, "SELECT username FROM admin WHERE username = '$username' AND password = '$password'");
+    $count2 = mysqli_num_rows($query2);
+
     // show name
     $row = mysqli_fetch_assoc($query);
     //$error = array();
@@ -23,11 +27,17 @@ if (isset($_POST['login'])) {
 		
         header("location:index.php");
     } else{
-        header( "refresh:0;url=login.php" );
-        echo '<script type="text/javascript">';
-        echo 'alert("Kiểm tra lại mã sinh viên hoặc mật khẩu")';
-        echo '</script>';
-        //$error['login'] = 'Mã sinh viên hoặc mật khẩu không đúng!';
+        if ($count2 != 0) {
+            $row2 = mysqli_fetch_assoc($query2);
+            header("location:admin.php");
+            $_SESSION['name_admin'] = $row2['username'];
+        }
+        else {
+            header("refresh:0;url=login.php");
+            echo '<script type="text/javascript">';
+            echo 'alert("Kiểm tra lại tài khoản!")';
+            echo '</script>';
+        }
     }
 }
 ?>

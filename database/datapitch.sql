@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2020 at 02:57 PM
+-- Generation Time: May 07, 2020 at 10:26 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -56,6 +56,24 @@ INSERT INTO `account` (`S_name`, `S_class`, `id`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('admin', '123456');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `book1`
 --
 
@@ -68,9 +86,19 @@ CREATE TABLE `book1` (
   `phone2` varchar(10) NOT NULL,
   `date` date NOT NULL,
   `timeslot` varchar(20) NOT NULL,
-  `registdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `registdate` date NOT NULL DEFAULT current_timestamp(),
   `purpose` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `book1`
+--
+
+INSERT INTO `book1` (`id`, `name`, `class`, `student_id`, `phone1`, `phone2`, `date`, `timeslot`, `registdate`, `purpose`) VALUES
+(4, 'Võ Thị Vui', '43K14', '171121514119', '0969985077', '0708586643', '2020-05-06', '09:00AM-10:00AM', '2020-05-06', '1'),
+(8, 'Võ Thị Vui', '43K14', '171121514119', '0969985077', '0708586643', '2020-05-14', '13:00PM-14:00PM', '2020-05-06', '1'),
+(10, 'Nguyễn Quốc Việt', '43K14', '171121514118', '0969985077', '0708586643', '2020-05-07', '13:00PM-14:00PM', '2020-05-06', '1'),
+(11, 'Nguyễn Quốc Việt', '43K14', '171121514118', '0969985077', '0708586643', '2020-05-07', '20:00PM-21:00PM', '2020-05-06', '1');
 
 -- --------------------------------------------------------
 
@@ -87,9 +115,20 @@ CREATE TABLE `book2` (
   `phone2` varchar(10) NOT NULL,
   `date` date NOT NULL,
   `timeslot` varchar(20) NOT NULL,
-  `registdate` datetime NOT NULL DEFAULT current_timestamp(),
+  `registdate` date NOT NULL DEFAULT current_timestamp(),
   `purpose` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `book2`
+--
+
+INSERT INTO `book2` (`id`, `name`, `class`, `student_id`, `phone1`, `phone2`, `date`, `timeslot`, `registdate`, `purpose`) VALUES
+(1, 'Võ Thị Vui', '43K14', '171121514119', '0969985077', '0708586643', '2020-05-08', '20:00PM-21:00PM', '2020-05-06', '1'),
+(2, 'Võ Thị Vui', '43K14', '171121514119', '0969985077', '0708586643', '2020-05-15', '08:00AM-09:00AM', '2020-05-06', '1'),
+(3, 'Võ Thị Vui', '43K14', '171121514119', '0969985077', '0708586643', '2020-05-15', '09:00AM-10:00AM', '2020-05-06', '0'),
+(4, 'Nguyễn Quốc Việt', '43K14', '171121514118', '0969985077', '0708586643', '2020-05-07', '17:00PM-18:00PM', '2020-05-06', '1'),
+(5, 'Võ Thị Vui', '43K14', '171121514119', '0969985077', '0708586643', '2020-05-28', '13:00PM-14:00PM', '2020-05-07', '1');
 
 --
 -- Indexes for dumped tables
@@ -121,13 +160,13 @@ ALTER TABLE `book2`
 -- AUTO_INCREMENT for table `book1`
 --
 ALTER TABLE `book1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `book2`
 --
 ALTER TABLE `book2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

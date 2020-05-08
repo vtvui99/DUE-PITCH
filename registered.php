@@ -1,6 +1,6 @@
 <?php
     include "session.php";
-
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     //connect
     $conn = mysqli_connect('localhost', 'root', '', 'datapitch');
 
@@ -29,15 +29,20 @@
 
             //in du lieu ra tren tung dong
             while ($row = mysqli_fetch_assoc($query)){
-                echo "<tr>";
-                echo "<td class='tableId'>" .$stt ."</td>";
-                $date = date_create($row["date"]);
-                echo "<td class='tableDay'>" .date_format($date, "d-m-Y") ."</td>";
-                echo "<td class='tableTime'>" .$row["timeslot"] ."</td>";
-                $datetime = date_create($row["registdate"]);
-                echo "<td class='tableDate'>" .date_format($datetime, "d-m-Y H:i:s") ."</td>";
-                echo "</tr>";
-                $stt++;
+                $today = time();
+                $date2 = date_parse_from_format("Y-m-d", $row['date']);
+                $date3 = mktime($date2['hour'], $date2['minute'], $date2['second'], $date2['month'], $date2['day'], $date2['year']);
+                if ($date3 - $today >= 0){
+                    echo "<tr>";
+                    echo "<td class='tableId'>" . $stt . "</td>";
+                    $date = date_create($row["date"]);
+                    echo "<td class='tableDay'>" . date_format($date, "d-m-Y") . "</td>";
+                    echo "<td class='tableTime'>" . $row["timeslot"] . "</td>";
+                    $datetime = date_create($row["registdate"]);
+                    echo "<td class='tableDate'>" . date_format($datetime, "d-m-Y") . "</td>";
+                    echo "</tr>";
+                    $stt++;
+                }
             }
             echo "</table>";
         }
@@ -61,7 +66,7 @@
 <body>
     <header>
         <div class="container">
-            <a class="logo" href="index.php"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE"></a>
+            <a class="logo" href="index.php"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE" style="width: 270px"></a>
             <div class="header-right">
                 <button onclick="dropdownMenu()" class="dropdown-button"><?php echo $_SESSION['login_user']; ?></button>
                 <div id="dropdown" class="dropdown-content">
