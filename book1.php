@@ -5,7 +5,6 @@
 $mysqli=new mysqli('localhost','root','','datapitch');
 $mysqli->query("SET NAMES 'utf8'");
 $stmt = $mysqli->query("SELECT * FROM table_name", MYSQLI_STORE_RESULT);
-
 if(isset($_GET['date'])){
   $date=$_GET['date'];
   $stmt=$mysqli->prepare("select*from book1 where date=?");
@@ -31,25 +30,21 @@ if(isset($_POST['submit'])){
   $phone1=$_POST['phone1'];
   $phone2=$_POST['phone2'];
   $purpose=$_POST['purpose'];
-    
   $stmt=$mysqli->prepare("select*from book1 where date=? AND timeslot=?");
   $stmt->bind_param('ss',$date,$timeslot);
-    
   if($stmt->execute()){
     $result=$stmt->get_result();
     if($result->num_rows>0){
       $msg="<div class='alert alert-dangers'>Already Booked</div>";
       
-    }
-    else
-    {
+    }else{
       $stmt=$mysqli->prepare("INSERT INTO book1 (name,timeslot,student_id,class,phone1,phone2,purpose,date) VALUES (?,?,?,?,?,?,?,?)");
-      $stmt->bind_param('ssssssss',$name,$timeslot,$student_id,$class,$phone1,$phone2, $purpose,$date);
-      $stmt->execute();
-      $msg="<div class='alert alert-success'>Đặt lịch thành công</div>";
-      $bookings[]=$timeslot;
-      $stmt->close();
-      $mysqli->close();
+  $stmt->bind_param('ssssssss',$name,$timeslot,$student_id,$class,$phone1,$phone2, $purpose,$date);
+  $stmt->execute();
+  $msg="<div class='alert alert-success'>Đặt lịch thành công</div>";
+  $bookings[]=$timeslot;
+  $stmt->close();
+  $mysqli->close();
 
     }
   }
@@ -91,7 +86,9 @@ function timeslots($duration,$cleanup,$start,$end){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Đặt lịch</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/all.css">
 </head>
@@ -104,7 +101,7 @@ function timeslots($duration,$cleanup,$start,$end){
                 <button onclick="dropdownMenu()" class="dropdown-button"><?php echo $_SESSION['login_user']; ?></button>
                 <div id="dropdown" class="dropdown-content">
                     <a href="#">Thiết lập tài khoản</a>
-                    <a href="login.php">Đăng xuất</a>
+                    <a href="logout.php">Đăng xuất</a>
                 </div>
             </div>
         </div>
@@ -248,7 +245,9 @@ function timeslots($duration,$cleanup,$start,$end){
     </footer>
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7I2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
     <script>
     $(".book").click(function() {
         var timeslot = $(this).attr('data-timeslot');

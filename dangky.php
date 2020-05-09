@@ -24,7 +24,7 @@
                 <button onclick="dropdownMenu()" class="dropdown-button"><?php echo $_SESSION['login_user']; ?></button>
                 <div id="dropdown" class="dropdown-content">
                     <a href="#">Thiết lập tài khoản</a>
-                    <a href="login.php">Đăng xuất</a>
+                    <a href="logout.php">Đăng xuất</a>
                 </div>
             </div>
         </div>

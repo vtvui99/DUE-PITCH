@@ -115,15 +115,11 @@
     <div class="container" style="margin-top: 30px">
         <a class="logo" href="admin.php"><img src="./img/logo-truong.png" alt="Logo DUE" title="Logo DUE" style="width: 270px"></a>
         <div class="header-right">
-            <button class="dropdown-button logout"><a href="login.php">Đăng xuất</a></button>
+            <button class="dropdown-button logout"><a href="logout.php">Đăng xuất</a></button>
         </div>
     </div>
     <div class="container">
         <h1 style="text-align: center; font-size: 25px;">QUẢN LÝ LỊCH ĐẶT SÂN BÓNG</h1>
-<!--        <div class="header-right">-->
-<!--            <button class="dropdown-button logout"><a href="login.php">Đăng xuất</a></button>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="form-find">
             <form method="get" name="form-find">
                 <table>
