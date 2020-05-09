@@ -4,12 +4,25 @@
 <?php 
 function build_calendar($month,$year){
 	$mysqli=new mysqli('localhost','root','','datapitch');
+	
+	//Tạo mảng chứa chữ viết tên của các ngày trong tuần.
 	$daysOfWeek=array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+	
+	//Ngày đầu tiên của tháng?
 	$firstDayOfMonth=mktime(0,0,0,$month,1,$year);
+	
+	//Tháng này chứa bao nhiêu ngày?
 	$numberDays=date('t',$firstDayOfMonth);
+	
+	//Lấy thông tin về ngày đầu tiên của tháng
 	$dateComponents=getdate($firstDayOfMonth);
+	
+	//Tên của tháng?
 	$monthName=$dateComponents['month'];
+	
+	//Ngày nào trong tuần
 	$dayOfWeek=$dateComponents['wday'];
+	
 	$datetoday=date('Y-m-d');
 
 	$calendar="<table class='table table-bordered'>";
@@ -20,14 +33,14 @@ function build_calendar($month,$year){
 
 	$calendar.="<a class='btn btn-xs btn-primary'href='?month=".date('m',mktime(0,0,0,$month+1,1,$year))."&year=".date('Y',mktime(0,0,0,$month+1,1,$year))."'>Next Month</a></center><br>";
 
-
-
 	$calendar.="<tr>";
-
+	
+	//Tạo tiêu đề lịch
 	foreach($daysOfWeek as $day){
 		$calendar.="<th class='header'>$day</th>";
 	}
-
+	
+	//Tạo phần còn lại của lịch
 	$currentDay=1;
 
 	$calendar.="</tr><tr>";
@@ -43,7 +56,7 @@ function build_calendar($month,$year){
 	$month=str_pad($month,2,"0",STR_PAD_LEFT);
 
 	while($currentDay<=$numberDays){
-
+	//Khi đến cột Thứ bảy thì bắt đầu 1 hàng mới
 		if($dayOfWeek==7){
 
 			$dayOfWeek=0;
@@ -73,12 +86,13 @@ function build_calendar($month,$year){
 	 }
 
 
-
 	 $calendar.="</td>";
 
 	 $currentDay++;
 	 $dayOfWeek++;
 	}
+
+//Hoàn thành hàng cuối cùng trong tháng, nếu cần thiết
   if($dayOfWeek!=7){
   	$remainingDays=7-$dayOfWeek;
   	for($i=0;$i<$remainingDays;$i++){
@@ -133,7 +147,7 @@ function checkSlots($mysqli,$date){
                 <button onclick="dropdownMenu()" class="dropdown-button"><?php echo $_SESSION['login_user']; ?></button>
                 <div id="dropdown" class="dropdown-content">
                     <a href="#">Thiết lập tài khoản</a>
-                    <a href="logout.php">Đăng xuất</a>
+                    <a href="login.php">Đăng xuất</a>
                 </div>
             </div>
         </div>

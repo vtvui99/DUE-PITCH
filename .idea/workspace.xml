@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31b1bcf5-6fb5-4ec1-868b-652e9b24c2c9" name="Default Changelist" comment="" />
+    <list default="true" id="31b1bcf5-6fb5-4ec1-868b-652e9b24c2c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/calendar1.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar2.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar2.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +14,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bRhKZIzJhIJQaTtGoOLca4Jd9B" />
   <component name="ProjectViewState">
@@ -58,6 +64,7 @@
       <workItem from="1588836358265" duration="1781000" />
       <workItem from="1588838173850" duration="1685000" />
       <workItem from="1588990107536" duration="1245000" />
+      <workItem from="1588993468081" duration="11000" />
     </task>
     <servers />
   </component>
